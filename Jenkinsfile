@@ -1,5 +1,8 @@
 pipeline {
 	agent any
+	tools {
+        maven 'maven3.6' 
+    }
 	stages {
 
 		stage('Cleanup') {
@@ -20,13 +23,8 @@ pipeline {
 		}
 
 		stage('Zip Repo') {
-			environment {
-				mvnHome = tool name: 'maven3.6', type: 'maven'
-			}
 			steps {
-				withMaven(maven: 'maven3.6'){
-				  sh "${mvnHome}/bin/mvn package"
-				}
+				bat "mvn clean package"
 			}
 		}
 
