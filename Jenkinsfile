@@ -20,9 +20,12 @@ pipeline {
 		}
 
 		stage('Zip Repo') {
+			environment {
+				mvnHome = tool name: 'maven3.6', type: 'maven'
+			}
 			steps {
-				script {
-					echo 'Stage 2'
+				withMaven(maven: 'maven3.6'){
+				  sh "${mvnHome}/bin/mvn package"
 				}
 			}
 		}
