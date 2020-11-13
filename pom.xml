@@ -47,6 +47,8 @@
                         <goals>
                             <goal>publish</goal>
                         </goals>
+					</execution>
+				</executions>
 			</plugin>
         </plugins>
     </build>

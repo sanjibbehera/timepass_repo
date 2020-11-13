@@ -29,35 +29,10 @@ pipeline {
 		}
 
 		stage('Publish to Artifact') {
-			/* def server = Artifactory.server "artifactory@ibsrv02"
-			def server = Artifactory.server 'Artifactory' url: 'http://localhost:8082/artifactory', credentialsId: 'jfrog_creds'
-			def buildInfo = Artifactory.newBuildInfo()
-			buildInfo.env.capture = true
-			def rtMaven = Artifactory.newMavenBuild()
-			rtMaven.tool = MAVEN_TOOL // Tool name from Jenkins configuration
-			//rtMaven.opts = "-Denv=dev"
-			rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
-			//rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
-			rtMaven.run pom: 'pom.xml', goals: 'publish', buildInfo: buildInfo
-			server.publishBuildInfo buildInfo */
-			//def server = Artifactory.server 'Artifactory' url: 'http://localhost:8082/example-repo-local', credentialsId: 'jfrog_creds'
 			steps {
 				echo 'Upload starts'
-				script {
-					def server = Artifactory.newServer 'Artifactory' url: 'http://localhost:8082/artifactory', credentialsId: 'jfrog_creds'
-					server.bypassProxy = true
-					server.connection.timeout = 300
-					
-					def uploadSpec = """{
-						"files": [
-							{
-								"pattern": "assemblyPluginTutorial-1.0-SNAPSHOT.zip"
-								"target": "libs-release-local/com/sanjib/assemblyPluginTutorial/"
-							}
-						]
-					}"""
-					server.upload(uploadSpec)
-				}
+				//bat "mvn publish"
+				echo 'Upload finished'
 			}
 		}
 	}
