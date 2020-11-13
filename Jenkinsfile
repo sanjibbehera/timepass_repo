@@ -29,11 +29,26 @@ pipeline {
 		}
 
 		stage('Publish to Artifact') {
-			steps {
+			//def server = Artifactory.server "artifactory@ibsrv02"
+			def server = Artifactory.server 'Artifactory' url: 'http://localhost:8082/artifactory', credentialsId: 'jfrog_creds'
+			def buildInfo = Artifactory.newBuildInfo()
+			buildInfo.env.capture = true
+			def rtMaven = Artifactory.newMavenBuild()
+			rtMaven.tool = MAVEN_TOOL // Tool name from Jenkins configuration
+			//rtMaven.opts = "-Denv=dev"
+			rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
+			//rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
+
+			rtMaven.run pom: 'pom.xml', goals: 'publish', buildInfo: buildInfo
+			server.bypassProxy = true
+			server.connection.timeout = 300
+			server.publishBuildInfo buildInfo
+			//def server = Artifactory.server 'Artifactory' url: 'http://localhost:8082/example-repo-local', credentialsId: 'jfrog_creds'
+			/*steps {
 				script {
 					echo 'Stage 3'
 				}
-			}
+			}*/
 		}
 	}
 }
