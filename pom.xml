@@ -43,14 +43,11 @@
                 <inherited>false</inherited>
                 <executions>
                     <execution>
-                        <id>build-info</id>
+                        <phase>deploy</phase>
                         <goals>
-                            <goal>deploy</goal>
+                            <goal>single</goal>
                         </goals>
                         <configuration>
-                            <deployProperties>
-                                <gradle>awesome</gradle>
-                            </deployProperties>
                             <artifactory>
                                 <includeEnvVars>true</includeEnvVars>
                                 <envVarsExcludePatterns>*password*,*secret*,*key*,*token*,*passphrase*</envVarsExcludePatterns>
