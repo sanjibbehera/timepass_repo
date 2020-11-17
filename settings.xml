@@ -6,7 +6,7 @@
       <pluginGroups/>
       <servers>
 		<server>
-			<id>artifact-snapshots</id>
+			<id>central</id>
 			<username>admin</username>
 			<password>Admin2020</password>
 		</server>
