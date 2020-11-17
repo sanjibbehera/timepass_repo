@@ -39,23 +39,15 @@
         </plugins>
     </build>
 	<distributionManagement>
-		<repository>
-			<id>central</id>
-			<name>artifact-releases</name>
-			<url>http://localhost:8081/artifactory/libs-release-local</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</releases>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>artifact-snapshots</name>
-			<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
-		</snapshotRepository>
-	</distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>DESKTOP-NCF5VKF-releases</name>
+        <url>http://localhost:8081/artifactory/libs-release-local</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>DESKTOP-NCF5VKF-snapshots</name>
+        <url>http://localhost:8081/artifactory/libs-release-local</url>
+    </snapshotRepository>
+</distributionManagement>
 </project>
