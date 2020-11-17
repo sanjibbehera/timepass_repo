@@ -45,7 +45,7 @@
                     <execution>
                         <id>build-info</id>
                         <goals>
-                            <goal>publish</goal>
+                            <goal>deploy</goal>
                         </goals>
                         <configuration>
                             <deployProperties>
