@@ -28,56 +28,32 @@ pipeline {
 			}
 		}
 
-		stage('Publish to Artifact') {
+		/*stage('Publish to Artifact') {
 			steps {
 				echo 'Upload starts'
 				bat "mvn --settings ${WORKSPACE}/settings.xml clean install"
-				bat "mvn --settings ${WORKSPACE}/settings.xml clean deploy"
 				echo 'Upload finished'
 			}
-		}
+		}*/
 		
-		stage('Upload'){
-			steps{
-				echo 'Uploading'
-				script{
-					def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', credentialsId: 'artifactory'
-					server.bypassProxy=true
-					def uploadSpec = """{
-						"files": [
-							{
-								"pattern": "assemblyPluginTutorial*",
-								"target": "libs-snapshot-local/com/sanjib/assemblyPluginTutorial/" 
-							}
-						] 
-					}"""
-					server.upload(uploadSpec)
-				}
-			}
-		}
-		
-		/*stage('publish to artifactory') {
+		stage('publish to artifactory') {
           steps {
+				bat "mvn --settings ${WORKSPACE}/settings.xml clean install"
             rtUpload (
                   serverId: 'artifactory',
                   spec: '''{
                         "files": [
                           {
-                            "pattern": "assemblyPluginTutorial*.zip",
-                            "target": "libs-snapshot-local/com/sanjib/assemblyPluginTutorial/"
+                            "pattern": "target\assemblyPluginTutorial*.zip",
+                            "target": "libs-snapshot-local"
                           }
                        ]
-                  }''',
-
-                  buildName: 'demo-app',
-                  buildNumber: env.GIT_HASH_VERSION
+                  }'''
               )
               rtPublishBuildInfo (
-                    serverId: "artifactory",
-                    buildName: 'demo-app',
-                    buildNumber: env.GIT_HASH_VERSION
+                    serverId: "artifactory"
                 )
           }
-        }*/
+        }
 	}
 }
