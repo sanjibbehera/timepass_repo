@@ -35,4 +35,5 @@ pipeline {
 				echo 'Upload finished'
 			}
 		}
+	}
 }
