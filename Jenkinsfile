@@ -31,7 +31,7 @@ pipeline {
 		stage('Publish to Artifact') {
 			steps {
 				echo 'Upload starts'
-				bat "mvn --settings settings.xml deploy"
+				bat "mvn --settings ${WORKSPACE}/settings.xml deploy"
 				echo 'Upload finished'
 			}
 		}
