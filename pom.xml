@@ -50,6 +50,8 @@
                         <configuration>
                             <publisher>
                                 <contextUrl>http://localhost:8082/artifactory</contextUrl>
+                                <username>admin</username>
+                                <password>Admin2020</password>
                                 <repoKey>libs-release-local</repoKey>
                                 <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
                             </publisher>
