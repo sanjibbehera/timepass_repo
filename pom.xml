@@ -37,34 +37,8 @@
                 </executions>
             </plugin>
         </plugins>
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-http</artifactId>
-				<version>2.10</version>
-			</extension>
-		</extensions>
     </build>
-	<repositories>
-		<repository>
-			<id>central</id>
-			<url>http://localhost:8081/artifactory/</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</releases>
-		</repository>
-	</repositories>
 	<distributionManagement>
-		<repository>
-			<id>central</id>
-			<name>com-releases</name>
-			<url>http://localhost:8081/artifactory/libs-release-local</url>
-		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>com-snapshots</name>
