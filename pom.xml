@@ -36,35 +36,14 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-				<groupId>org.jfrog.buildinfo</groupId>
-                <artifactId>artifactory-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <inherited>false</inherited>
-                <executions>
-                    <execution>
-                        <phase>build-info</phase>
-                        <goals>
-                            <goal>publish</goal>
-                        </goals>
-                        <configuration>
-                            <publisher>
-                                <contextUrl>http://localhost:8082/artifactory</contextUrl>
-                                <username>admin</username>
-                                <password>Admin2020</password>
-                                <repoKey>libs-release-local</repoKey>
-                                <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
-                            </publisher>
-                            <buildInfo>
-                                <buildName>plugin-demo</buildName>
-                                <buildNumber>1.0</buildNumber>
-                                <buildUrl>http://build-url.org</buildUrl>
-                            </buildInfo>
-                        </configuration>
-					</execution>
-				</executions>
-			</plugin>
         </plugins>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-http</artifactId>
+				<version>2.10</version>
+			</extension>
+		</extensions>
     </build>
 	<repositories>
         <repository>
