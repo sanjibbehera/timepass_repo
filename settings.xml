@@ -5,7 +5,7 @@
     <mirror>
       <mirrorOf>*</mirrorOf>
       <name>repo</name>
-      <url>http://localhost:8081/artifactory/repo</url>
+      <url>http://localhost:8082/artifactory/repo</url>
       <id>repo</id>
     </mirror>
   </mirrors>
@@ -25,13 +25,13 @@
           </snapshots>
           <id>central</id>
           <name>libs-release</name>
-          <url>http://localhost:8081/artifactory/libs-release</url>
+          <url>http://localhost:8082/artifactory/libs-release</url>
         </repository>
         <repository>
           <snapshots />
           <id>snapshots</id>
           <name>libs-snapshot</name>
-          <url>http://localhost:8081/artifactory/libs-snapshot</url>
+          <url>http://localhost:8082/artifactory/libs-snapshot</url>
         </repository>
       </repositories>
       <pluginRepositories>
