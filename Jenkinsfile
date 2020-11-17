@@ -49,12 +49,12 @@ pipeline {
                        ]
                   }''',
 
-                  buildName: 'my-app',
+                  buildName: 'demo-app',
                   buildNumber: env.GIT_HASH_VERSION
               )
               rtPublishBuildInfo (
                     serverId: "artifactory",
-                    buildName: 'my-app',
+                    buildName: 'demo-app',
                     buildNumber: env.GIT_HASH_VERSION
                 )
           }
