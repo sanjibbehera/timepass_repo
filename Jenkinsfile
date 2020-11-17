@@ -36,7 +36,26 @@ pipeline {
 			}
 		}
 		
-		stage('publish to artifactory') {
+		stage('Upload'){
+			steps{
+				echo 'Uploading'
+				script{
+					def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', credentialsId: 'artifactory'
+					server.bypassProxy=true
+					def uploadSpec = """{
+						"files": [
+							{
+								"pattern": "assemblyPluginTutorial*",
+								"target": "libs-release-local/com/sanjib/assemblyPluginTutorial/" 
+							}
+						] 
+					}"""
+					server.upload(uploadSpec)
+				}
+			}
+		}
+		
+		/*stage('publish to artifactory') {
           steps {
             rtUpload (
                   serverId: 'artifactory',
@@ -58,6 +77,6 @@ pipeline {
                     buildNumber: env.GIT_HASH_VERSION
                 )
           }
-        }
+        }*/
 	}
 }
