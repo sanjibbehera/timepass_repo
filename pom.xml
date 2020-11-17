@@ -43,29 +43,18 @@
                 <inherited>false</inherited>
                 <executions>
                     <execution>
-                        <phase>deploy</phase>
+                        <phase>build-info</phase>
                         <goals>
-                            <goal>single</goal>
+                            <goal>publish</goal>
                         </goals>
                         <configuration>
-                            <artifactory>
-                                <includeEnvVars>true</includeEnvVars>
-                                <envVarsExcludePatterns>*password*,*secret*,*key*,*token*,*passphrase*</envVarsExcludePatterns>
-                                <timeoutSec>60</timeoutSec>
-                            </artifactory>
                             <publisher>
                                 <contextUrl>http://localhost:8082/artifactory</contextUrl>
-                                <username>${username}</username>
-                                <password>${password}</password>
-                                <excludePatterns>*-tests.jar</excludePatterns>
+                                <username>admin</username>
+                                <password>Admin2020</password>
                                 <repoKey>libs-release-local</repoKey>
                                 <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
                             </publisher>
-                            <buildInfo>
-                                <buildName>plugin-demo</buildName>
-                                <buildNumber>${buildnumber}</buildNumber>
-                                <buildUrl>http://build-url.org</buildUrl>
-                            </buildInfo>
                         </configuration>
 					</execution>
 				</executions>
