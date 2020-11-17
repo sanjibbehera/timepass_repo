@@ -43,6 +43,14 @@
 			<id>central</id>
 			<name>artifact-releases</name>
 			<url>http://localhost:8081/artifactory/libs-release-local</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</releases>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
