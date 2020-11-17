@@ -31,7 +31,7 @@ pipeline {
 		stage('Publish to Artifact') {
 			steps {
 				echo 'Upload starts'
-				bat "mvn build-info"
+				bat "mvn install"
 				echo 'Upload finished'
 			}
 		}

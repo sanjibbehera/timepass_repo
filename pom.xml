@@ -43,7 +43,7 @@
                 <inherited>false</inherited>
                 <executions>
                     <execution>
-                        <phase>build-info</phase>
+                        <phase>install</phase>
                         <goals>
                             <goal>publish</goal>
                         </goals>
