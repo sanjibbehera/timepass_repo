@@ -39,21 +39,21 @@ pipeline {
 		stage('publish to artifactory') {
           steps {
 				bat "mvn --settings ${WORKSPACE}/settings.xml clean install"
-            rtUpload (
-                  serverId: 'artifactory',
-                  spec: '''{
-                        "files": [
-                          {
-                            "pattern": "target\assemblyPluginTutorial*.zip",
-                            "target": "libs-snapshot-local"
-                          }
-                       ]
-                  }'''
-              )
-              rtPublishBuildInfo (
-                    serverId: "artifactory"
-                )
-          }
+				rtUpload (
+					  serverId: 'artifactory',
+					  spec: '''{
+							"files": [
+							  {
+								"pattern": "target/assemblyPluginTutorial*.zip",
+								"target": "libs-snapshot-local"
+							  }
+						   ]
+					  }'''
+				  )
+				  rtPublishBuildInfo (
+						serverId: "artifactory"
+					)
+			}
         }
 	}
 }
