@@ -32,6 +32,7 @@ pipeline {
 			steps {
 				echo 'Upload starts'
 				bat "mvn --settings ${WORKSPACE}/settings.xml clean install"
+				bat "mvn --settings ${WORKSPACE}/settings.xml clean deploy"
 				echo 'Upload finished'
 			}
 		}
@@ -46,7 +47,7 @@ pipeline {
 						"files": [
 							{
 								"pattern": "assemblyPluginTutorial*",
-								"target": "libs-release-local/com/sanjib/assemblyPluginTutorial/" 
+								"target": "libs-snapshot-local/com/sanjib/assemblyPluginTutorial/" 
 							}
 						] 
 					}"""
@@ -63,7 +64,7 @@ pipeline {
                         "files": [
                           {
                             "pattern": "assemblyPluginTutorial*.zip",
-                            "target": "libs-release-local/com/sanjib/assemblyPluginTutorial/"
+                            "target": "libs-snapshot-local/com/sanjib/assemblyPluginTutorial/"
                           }
                        ]
                   }''',
